@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-var conString = "postgres://@localhost/memoriesapp";
+var conString = process.env.DATABASE_URL;
 var schema = require('../lib/data-schema.js')
 
 router.post('/api/v1/memories', function(req, res, next) {
