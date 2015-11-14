@@ -6,7 +6,6 @@ var schema = require('../lib/data-schema.js')
 
 router.post('/api/v1/memories', function(req, res, next) {
   pg.connect(conString, function(err, client, done) {
-
     if (err) {
       return console.error('error fetching client from pool', err);
     }
@@ -18,13 +17,11 @@ router.post('/api/v1/memories', function(req, res, next) {
       console.log("connected to database")
       res.status(200).end()
     });
-
   });
 });
 
 router.get('/api/v1/memories', function(req, res, next) {
   pg.connect(conString, function(err, client, done) {
-
     if (err) {
       return console.error('error fetching client from pool', err);
     }
@@ -35,13 +32,11 @@ router.get('/api/v1/memories', function(req, res, next) {
       }
       res.json(schema.formatRes(result.rows)).status(200).end()
     });
-
   });
 });
 
 router.get('/api/v1/memories/years', function (req, res, next){
   pg.connect(conString, function(err, client, done) {
-
     if (err) {
       return console.error('error fetching client from pool', err);
     }
@@ -58,7 +53,6 @@ router.get('/api/v1/memories/years', function (req, res, next){
 
 router.get('/api/v1/memories/:year', function (req, res, next){
   pg.connect(conString, function(err, client, done) {
-
     if (err) {
       return console.error('error fetching client from pool', err);
     }
@@ -72,13 +66,5 @@ router.get('/api/v1/memories/:year', function (req, res, next){
 
   });
 })
-
-
-
-
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Express' });
-// });
 
 module.exports = router;
